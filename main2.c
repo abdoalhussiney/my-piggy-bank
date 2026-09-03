@@ -1,7 +1,7 @@
+//Student Name: [ABDULRHMAN HISHAM ADBULLAH]
 #include <stdio.h>
 #include <stdint.h>
 
-/* Data & Constants */
 #define TICKS_GREEN   5U
 #define TICKS_YELLOW  2U
 #define TICKS_RED     4U
@@ -10,18 +10,15 @@
 
 typedef enum { LIGHT_GREEN = 0, LIGHT_YELLOW, LIGHT_RED } LightState_t;
 
-/* Status bits */
 #define BIT_NIGHT     0U
 #define BIT_BUSY      1U
 #define BIT_BLINK_ON  2U
 
-/* Bit Manipulation Macros */
 #define SET_BIT(reg, n)     ((reg) |= (uint8_t)(1U << (n)))
 #define CLR_BIT(reg, n)     ((reg) &= (uint8_t)~(1U << (n)))
 #define TOGGLE_BIT(reg, n)  ((reg) ^= (uint8_t)(1U << (n)))
 #define READ_BIT(reg, n)    ((uint8_t)(((reg) >> (n)) & 1U))
 
-/* Global Static Variables */
 static LightState_t light;
 static uint8_t status;
 static uint8_t ticksLeft;
@@ -30,7 +27,6 @@ static uint32_t carsPassed;
 static char logLine[LOG_LEN];
 static uint32_t totalTicks;
 
-/* Function Declarations */
 static void resetCrossing(void);
 static uint8_t ticksFor(LightState_t s);
 static LightState_t nextState(LightState_t s);
@@ -41,8 +37,6 @@ static void toggleNight(void);
 static void pushLog(char c);
 static void showLog(void);
 static void crossingReport(void);
-
-/* Functions Implementation */
 
 static void resetCrossing(void) {
     light = LIGHT_RED;
