@@ -51,7 +51,7 @@ static void resetCrossing(void) {
     carsPassed = 0;
     totalTicks = 0;
     
-    for (int i = 0; i < LOG_LEN; i++) {
+    for (uint8_t i = 0U; i < LOG_LEN; ++i) {
         logLine[i] = ' ';
     }
     
@@ -79,15 +79,15 @@ static LightState_t nextState(LightState_t s) {
 }
 
 static void pushLog(char c) {
-    for (int i = 0; i < LOG_LEN - 1; i++) {
-        logLine[i] = logLine[i + 1];
+    for (uint8_t i = 0U; i < LOG_LEN - 1U; ++i) {
+        logLine[i] = logLine[i + 1U];
     }
-    logLine[LOG_LEN - 1] = c;
+    logLine[LOG_LEN - 1U] = c;
 }
 
 static void showLog(void) {
     printf("Log History: [");
-    for (int i = 0; i < LOG_LEN; i++) {
+    for (uint8_t i = 0U; i < LOG_LEN; ++i) {
         putchar(logLine[i]);
     }
     printf("]\n");
